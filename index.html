@@ -3,331 +3,694 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RustyTea - Your Cozy Rust Community</title>
+    <title>RustyTea - A Rust Community for Everyone</title>
     <style>
-        /* Global Styles */
+        :root {
+            --primary: #e67e22;          /* Warmer orange */
+            --secondary: #34495e;        /* Softer dark blue */
+            --dark: #2c3e50;             /* Softer background */
+            --light: #f9f4e8;            /* Warm off-white */
+            --accent: #27ae60;           /* Friendly green */
+            --highlight: #f39c12;        /* Warm yellow */
+            --text: #333333;             /* Softer black for text */
+            --card-bg: rgba(255, 248, 240, 0.05); /* Warm transparent background */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background-color: #f5e9d6;
-            color: #5a3921;
-            line-height: 1.6;
-            margin: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23cfb595' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.7;
+            font-size: 16px;
         }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header Styles */
+        
         header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/400') center/cover no-repeat;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 20px;
-            background-color: #daa476;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            border: 4px solid #8b5a2b;
-            box-shadow: 5px 5px 0px #8b5a2b;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(243, 156, 18, 0.3), transparent);
+            z-index: 1;
+        }
+        
+        header > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            font-size: 4.5rem;
+            font-weight: bold;
+            color: var(--light);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             position: relative;
         }
-
-        h1 {
-            font-size: 3.5em;
-            margin: 0;
-            color: #5a3921;
-            text-shadow: 2px 2px 2px #f8d5a3;
-            letter-spacing: 2px;
-        }
-
-        .tagline {
-            font-style: italic;
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-
-        /* Section Styles */
-        .section {
-            background-color: #f8d5a3;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 30px;
-            border: 3px dashed #8b5a2b;
-            position: relative;
-        }
-
-        .section:nth-child(odd) {
-            transform: rotate(-1deg);
-        }
-
-        .section:nth-child(even) {
-            transform: rotate(1deg);
-        }
-
-        .section h2 {
-            font-size: 2em;
-            color: #8b5a2b;
-            border-bottom: 2px dotted #8b5a2b;
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-
-        /* Features List */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .feature-card {
-            background-color: #e6c9a8;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            transform: rotate(2deg);
-            border: 2px solid #8b5a2b;
-        }
-
-        .feature-card:nth-child(even) {
-            transform: rotate(-2deg);
-        }
-
-        /* Rules List */
-        .rules li {
-            margin-bottom: 15px;
-            background-color: rgba(218, 164, 118, 0.3);
-            padding: 10px;
-            border-radius: 8px;
-        }
-
-        /* FAQ Accordion */
-        .faq-item {
-            margin-bottom: 15px;
-        }
-
-        .faq-question {
-            cursor: pointer;
-            background-color: #daa476;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-
-        .faq-answer {
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 0 0 8px 8px;
-            display: none;
-        }
-
-        /* Join Section */
-        .join-us {
-            text-align: center;
-            background-color: #daa476;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 5px 5px 0px #8b5a2b;
-            border: 4px solid #8b5a2b;
-        }
-
-        .join-btn {
-            display: inline-block;
-            background-color: #8b5a2b;
-            color: #f8d5a3;
-            padding: 12px 30px;
-            border-radius: 10px;
-            font-size: 1.2em;
-            margin-top: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            border: 3px solid #5a3921;
-            transform: rotate(-2deg);
-            transition: all 0.3s;
-        }
-
-        .join-btn:hover {
-            transform: rotate(2deg) scale(1.05);
-        }
-
-        /* Decorative elements */
-        .tea-cup {
-            position: absolute;
-            top: -15px;
-            right: 30px;
-            font-size: 2em;
-            transform: rotate(15deg);
-        }
-
-        .tape {
-            position: absolute;
+        
+        .logo::after {
+            content: '';
+            display: block;
             width: 80px;
-            height: 30px;
-            background-color: rgba(255, 255, 255, 0.4);
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%) rotate(-5deg);
-            opacity: 0.7;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 10px auto;
+            border-radius: 2px;
         }
-
-        footer {
+        
+        .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--light);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+        }
+        
+        .btn:hover {
+            background: var(--highlight);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+        }
+        
+        nav {
+            background-color: var(--secondary);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary);
             text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
-            color: #8b5a2b;
+            position: relative;
+            padding-bottom: 15px;
         }
-
-        /* Custom list markers */
-        ul {
-            list-style-type: none;
-            padding-left: 20px;
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
-
-        ul li::before {
-            content: "☕ ";
-            color: #8b5a2b;
+        
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--highlight);
         }
-
-        /* Responsive Design */
+        
+        .about {
+            background-color: rgba(230, 126, 34, 0.05);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background-color: var(--primary);
+            border-radius: 10px 0 0 10px;
+        }
+        
+        .about p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .server-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature {
+            background-color: rgba(230, 126, 34, 0.05);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(230, 126, 34, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: rgba(230, 126, 34, 0.3);
+        }
+        
+        .feature::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: inline-block;
+            padding: 15px;
+            background-color: rgba(230, 126, 34, 0.1);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            text-align: center;
+            line-height: 50px;
+        }
+        
+        .rules-section {
+            background-color: var(--dark);
+            position: relative;
+        }
+        
+        .rules-list {
+            background-color: rgba(230, 126, 34, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            position: relative;
+            border: 1px solid rgba(230, 126, 34, 0.1);
+        }
+        
+        .rules-list ol {
+            padding-left: 30px;
+            counter-reset: rule-counter;
+        }
+        
+        .rules-list li {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 15px;
+            counter-increment: rule-counter;
+        }
+        
+        .rules-list li::before {
+            content: counter(rule-counter);
+            font-weight: bold;
+            color: var(--primary);
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 25px;
+            height: 25px;
+            background-color: rgba(230, 126, 34, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-size: 0.9rem;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(230, 126, 34, 0.1);
+        }
+        
+        .faq-question {
+            background-color: rgba(230, 126, 34, 0.05);
+            padding: 20px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: rgba(230, 126, 34, 0.1);
+        }
+        
+        .faq-question::before {
+            content: '❓';
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .faq-answer {
+            padding: 20px 25px;
+            background-color: rgba(52, 73, 94, 0.05);
+            border-top: 1px solid rgba(230, 126, 34, 0.1);
+        }
+        
+        .why-join {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.9));
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .why-join::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(230, 126, 34, 0.1), transparent 70%);
+            z-index: 1;
+        }
+        
+        .why-join > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .reasons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .reason {
+            text-align: center;
+            padding: 40px 30px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reason:hover {
+            background-color: rgba(230, 126, 34, 0.1);
+            transform: translateY(-5px);
+            border-color: rgba(230, 126, 34, 0.2);
+        }
+        
+        .reason::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(230, 126, 34, 0.1), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .reason:hover::after {
+            opacity: 1;
+        }
+        
+        .reason-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .reason-icon::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .join-cta {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(230, 126, 34, 0.2);
+        }
+        
+        .join-cta .btn {
+            margin: 10px;
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            text-align: center;
+            padding: 50px 20px 30px;
+            margin-top: 60px;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--highlight), var(--primary));
+        }
+        
+        .social-links {
+            margin: 30px 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            color: var(--light);
+            margin: 0 15px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 30px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: rgba(249, 244, 232, 0.6);
+        }
+        
         @media (max-width: 768px) {
-            .features {
+            .logo {
+                font-size: 3rem;
+            }
+            
+            .tagline {
+                font-size: 1.4rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav a {
+                margin: 5px 0;
+                width: 80%;
+                text-align: center;
+            }
+            
+            .server-features, .reasons {
                 grid-template-columns: 1fr;
             }
-
-            h1 {
-                font-size: 2.5em;
+            
+            .about, .rules-list, .why-join {
+                padding: 30px 20px;
+            }
+            
+            section {
+                padding: 60px 15px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="tape"></div>
-            <div class="tea-cup">☕</div>
-            <h1>RustyTea</h1>
-            <p class="tagline">A cozy place for Rust players to call home</p>
-        </header>
-
-        <section class="section" id="about">
-            <div class="tape"></div>
-            <h2>About Our Server</h2>
-            <p>Welcome to RustyTea - where Rust gameplay meets friendly community! Founded in 2023, our server has grown into a tight-knit family of players who enjoy the perfect balance between PvP action and community building.</p>
-            <p>Our server is maintained by a dedicated team of admins who ensure a fair, fun, and drama-free environment. Whether you're a seasoned Rust veteran or just starting out, RustyTea offers something for everyone!</p>
-            <p>We run regular events, community projects, and friendly competitions to keep things fresh and exciting. Our custom plugins and mods enhance gameplay without taking away from the core Rust experience you know and love.</p>
-        </section>
-
-        <section class="section" id="features">
-            <div class="tape"></div>
-            <h2>Server Features</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <h3>Active Admins</h3>
-                    <p>Our admin team is online daily to help with issues and ensure fair play</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Custom Events</h3>
-                    <p>Weekly special events with unique prizes and gameplay mechanics</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Balanced Economy</h3>
-                    <p>Fair shop system and trading that doesn't break the game</p>
-                </div>
-                <div class="feature-card">
-                    <h3>2x Resources</h3>
-                    <p>Slightly boosted gathering rates for more building, less grinding</p>
-                </div>
-                <div class="feature-card">
-                    <h3>PvP Zones</h3>
-                    <p>Designated areas for both safe interaction and intense PvP</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Custom Maps</h3>
-                    <p>Rotating custom maps with unique landscapes and monuments</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="rules">
-            <div class="tape"></div>
-            <h2>Server Rules</h2>
-            <ul class="rules">
-                <li><strong>No Toxicity:</strong> Be respectful to all players. Trash talk is fine, but harassment, racism, and excessive toxicity will not be tolerated.</li>
-                <li><strong>No Cheating:</strong> Any form of hacking, exploiting, or scripting will result in an immediate permanent ban.</li>
-                <li><strong>No Griefing:</strong> Don't destroy bases just for the sake of it. Raid for loot, not to ruin someone's day.</li>
-                <li><strong>No Base Camping:</strong> Don't camp outside someone's base for extended periods just to frustrate them.</li>
-                <li><strong>Respect Safe Zones:</strong> PvP is not allowed in designated safe areas. These are for trading and socializing.</li>
-                <li><strong>Report Issues:</strong> Use the discord to report problems instead of taking matters into your own hands.</li>
-                <li><strong>Have Fun:</strong> Remember, it's just a game! We're all here to have a good time.</li>
-            </ul>
-        </section>
-
-        <section class="section" id="faq">
-            <div class="tape"></div>
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-item">
-                <div class="faq-question">How often does the server wipe?</div>
-                <div class="faq-answer">We do map wipes every Thursday and BP wipes on the first Thursday of each month.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">How do I report a player breaking rules?</div>
-                <div class="faq-answer">Join our Discord server and use the #report-player channel with screenshots/video evidence.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Are there any starter kits?</div>
-                <div class="faq-answer">Yes! New players receive a basic starter kit with tools and a small amount of resources to get going.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Can I donate to support the server?</div>
-                <div class="faq-answer">Absolutely! Check our Discord for donation links. Donors receive cosmetic perks but nothing that gives gameplay advantages.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">What's the max team size allowed?</div>
-                <div class="faq-answer">We allow teams up to 4 players. Larger groups will be asked to split up.</div>
-            </div>
-        </section>
-
-        <section class="section" id="why-join">
-            <div class="tape"></div>
-            <h2>Why Join RustyTea?</h2>
-            <p>Tired of toxic Rust servers with admin abuse or cheaters running wild? Looking for a place where you can enjoy the game without excessive grinding or unfair advantages? RustyTea might be just what you're looking for!</p>
-            <ul>
-                <li><strong>Community First:</strong> We prioritize building a friendly, mature player base over everything else.</li>
-                <li><strong>Perfect Balance:</strong> Enjoy PvP without the toxicity, build without excessive farming, and raid without admin interference.</li>
-                <li><strong>Regular Events:</strong> Our custom events break up the routine and offer unique ways to play Rust.</li>
-                <li><strong>Stability:</strong> Our server runs on high-performance hardware with minimal downtime and no lag.</li>
-                <li><strong>Growing Family:</strong> Join our Discord community with over 500 members who share tips, stories, and memes.</li>
-            </ul>
+    <header>
+        <div class="logo">RustyTea</div>
+        <p class="tagline">A Rust Community for Everyone</p>
+        <p class="subtitle">Where working professionals and casual players can enjoy Rust without the grind</p>
+        <a href="#join" class="btn">Join Our Community</a>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <a href="#about">About Us</a>
+            <a href="#features">Server Features</a>
+            <a href="#rules">Rules</a>
+            <a href="#faq">FAQ</a>
+            <a href="#join">Why Join</a>
+        </div>
+    </nav>
+    
+    <section id="about">
+        <h2>Welcome to RustyTea</h2>
+        <div class="about">
+            <p>RustyTea is a <span class="highlight">welcoming Rust community</span> designed specifically for players who have real-life commitments but still want to enjoy everything that Rust has to offer. We understand that not everyone has endless hours to grind – our server is tailored to provide a balanced experience that respects your time.</p>
             
-            <div class="join-us">
-                <h3>Ready to Join the RustyTea Family?</h3>
-                <p>Connect to our server using the IP below or join our Discord to get started!</p>
-                <p>Server IP: <strong>play.rustytea.com:28015</strong></p>
-                <a href="#" class="join-btn">Join Our Discord</a>
+            <p>Founded in 2023 by a group of professionals who love Rust but couldn't dedicate countless hours to it, our server has grown into a <span class="highlight">thriving community of like-minded players</span>. We've created an environment where you can progress at a reasonable pace without sacrificing the core Rust experience.</p>
+            
+            <p>Whether you can only play a few hours after work, on weekends, or have an unpredictable schedule, RustyTea gives you the opportunity to <span class="highlight">build, raid, and engage in PvP without requiring a full-time commitment</span>. Our community values quality interactions over quantity of time spent, creating a more mature and friendly atmosphere than you'll find on many servers.</p>
+            
+            <p>Join us if you're looking for a place where you can enjoy Rust without the toxic environment and extreme time requirements that often accompany vanilla servers. At RustyTea, we believe that <span class="highlight">everyone deserves a chance to enjoy this fantastic game</span>, regardless of how much free time they have.</p>
+        </div>
+    </section>
+    
+    <section id="features">
+        <h2>Server Features</h2>
+        <div class="server-features">
+            <div class="feature">
+                <div class="feature-icon">⏱️</div>
+                <h3>Time-Friendly Rates</h3>
+                <p>Enjoy 3x gather rates and balanced loot tables that respect your limited playtime without making everything too easy. Progress at a reasonable pace even with just a few hours of play per week.</p>
             </div>
-        </section>
+            <div class="feature">
+                <div class="feature-icon">🛡️</div>
+                <h3>Active Protection</h3>
+                <p>Our admin team includes working professionals who understand your schedule. We use advanced anti-cheat systems and actively monitor for toxic behavior to ensure a pleasant experience.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">👥</div>
+                <h3>Small Group Focus</h3>
+                <p>With a strict group limit of 4 players, solo players and small teams can thrive. Our balance changes prevent large groups from dominating the server, creating a more even playing field.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔄</div>
+                <h3>Bi-Weekly Wipes</h3>
+                <p>Server wipes every other Thursday at 7PM EST, giving you two full weekends per wipe. Monthly BP wipes allow new players to join without feeling permanently behind.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🏠</div>
+                <h3>Offline Protection</h3>
+                <p>Enhanced offline raid protection means you won't log in to find everything gone after a day at work. Limited raid windows during evenings and weekends help balance the experience for those with jobs.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🌟</div>
+                <h3>Weekend Events</h3>
+                <p>Special events scheduled during weekend hours when most working players can participate. Enjoy raid bases, treasure hunts, and PvP arenas when you actually have time to play.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="rules">
+        <h2>Community Guidelines</h2>
+        <div class="rules-list">
+            <ol>
+                <li><strong>Respect Everyone's Time:</strong> We're all adults with responsibilities. Don't engage in pointless harassment or activities that waste others' limited gaming time.</li>
+                <li><strong>No Toxic Behavior:</strong> Keep communication civil and constructive. Banter is fine, but excessive insults, slurs, or harassment will not be tolerated.</li>
+                <li><strong>4-Player Group Limit:</strong> Teams are strictly limited to 4 players maximum. Alliances between groups to circumvent this limit are prohibited.</li>
+                <li><strong>Balanced Raiding:</strong> Offline raiding is discouraged but allowed during designated raid windows. Complete base destruction (foundation wiping) is not permitted.</li>
+                <li><strong>No Blocking Resources:</strong> Don't wall off monuments or resource spawns. Everyone deserves fair access to the map's resources.</li>
+                <li><strong>Be Considerate With Building:</strong> Avoid excessive compounding or building structures specifically designed to lag the server. Remember, we all want smooth gameplay.</li>
+                <li><strong>No Exploits or Hacks:</strong> Play fairly and report bugs rather than exploiting them. Cheating of any kind results in an immediate permanent ban.</li>
+                <li><strong>Support New Players:</strong> Everyone was new once. Offer advice rather than mockery to newer players trying to learn.</li>
+                <li><strong>Join Our Discord:</strong> All players should join our Discord for announcements, updates, and community interaction.</li>
+                <li><strong>Have Fun Together:</strong> Remember this is a game meant to be enjoyed. Sometimes helping others creates a better experience than dominating them.</li>
+            </ol>
+        </div>
+        <p>Our admin team enforces these guidelines with the understanding that we're all here to have fun in our limited free time. Moderators will issue warnings before taking action in most cases, but severe or repeated violations may result in temporary or permanent bans.</p>
+    </section>
+    
+    <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question">What are the server wipe schedules?</div>
+            <div class="faq-answer">We wipe the server every other Thursday at 7PM EST. This schedule gives players two full weekends per wipe cycle, making it more accessible for those who primarily play on weekends. Blueprint wipes occur on the first Thursday of each month. All wipe announcements are posted in our Discord server with at least 3 days notice.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How active are admins if I need help?</div>
+            <div class="faq-answer">Our admin team consists of working professionals across multiple time zones, ensuring coverage during peak evening hours (6PM-11PM) on weekdays and extended hours on weekends. Admin assistance can be requested through our Discord's #help-desk channel, with typical response times under 30 minutes during peak hours.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Is this server good for solo players?</div>
+            <div class="faq-answer">Absolutely! We've designed the server with solo and duo players in mind. With our 4-player group limit, adjusted gather rates, and offline protection mechanics, solo players can make meaningful progress even with limited play time. We also have a dedicated #solo-lfg channel in our Discord where solo players can connect.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How does the offline raid protection work?</div>
+            <div class="faq-answer">Our offline protection system increases the durability of building components by 50% when all team members are offline. Additionally, we limit raiding to specific windows (6PM-12AM on weekdays, 12PM-12AM on weekends) to ensure players have a chance to defend their bases when they're actually available to play.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Do you offer any starter kits or benefits?</div>
+            <div class="faq-answer">Yes, all players receive a basic starter kit with essential tools and a small amount of resources to get going quickly. We understand your time is valuable! We also offer a slightly enhanced kit for returning players who were active in the previous wipe. VIP packages with additional quality-of-life benefits are available but carefully balanced to avoid pay-to-win advantages.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How do you handle players who break rules?</div>
+            <div class="faq-answer">We use a warning system for minor infractions, giving players a chance to correct their behavior. More serious violations like cheating or extreme toxicity result in immediate temporary or permanent bans. All moderation actions are documented and transparent. Ban appeals can be submitted in our Discord and are reviewed by multiple admins to ensure fairness.</div>
+        </div>
+    </section>
+    
+    <section id="join">
+        <h2>Why Join Our Community</h2>
+        <div class="why-join">
+            <p>At RustyTea, we've created a unique Rust environment that respects your time while still delivering the excitement and challenge that makes Rust special. Here's why our community might be perfect for you:</p>
+            
+            <div class="reasons">
+                <div class="reason">
+                    <div class="reason-icon">⚖️</div>
+                    <h3>Work-Life Balance</h3>
+                    <p>Our server settings and event schedules are designed specifically for players with jobs, families, and real-life responsibilities. No need to choose between Rust and your life.</p>
+                </div>
+                <div class="reason">
+                    <div class="reason-icon">🤝</div>
+                    <h3>Mature Community</h3>
+                    <p>Enjoy playing alongside other adults who understand the value of limited gaming time and prefer quality interactions over toxic behavior or endless grinding.</p>
+                </div>
+                <div class="reason">
+                    <div class="reason-icon">🛑</div>
+                    <h3>Less Frustration</h3>
+                    <p>Our balanced approach to raiding, offline protection, and moderation means fewer frustrating experiences that waste your precious gaming hours.</p>
+                </div>
+                <div class="reason">
+                    <div class="reason-icon">📈</div>
+                    <h3>Meaningful Progress</h3>
+                    <p>Even with just 5-10 hours of play per week, you can make real progress, build significant bases, and participate in all aspects of the game.</p>
+                </div>
+                <div class="reason">
+                    <div class="reason-icon">🔄</div>
+                    <h3>Regular Fresh Starts</h3>
+                    <p>Our bi-weekly wipes mean you're never too far behind. Miss a few days? No problem - everyone starts fresh regularly, and our wipe schedule includes two full weekends.</p>
+                </div>
+                <div class="reason">
+                    <div class="reason-icon">🎮</div>
+                    <h3>Weekend Events</h3>
+                    <p>Special events timed for when working professionals can actually participate. Enjoy extra activities during the hours you're most likely able to play.</p>
+                </div>
+            </div>
 
-        <footer>
-            <p>RustyTea Rust Server © 2025 | Made with ☕ and 🫖</p>
-        </footer>
-    </div>
-
-    <script>
-        // Simple FAQ accordion functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                if (answer.style.display === 'block') {
-                    answer.style.display = 'none';
-                } else {
-                    // Close all other answers
-                    document.querySelectorAll('.faq-answer').forEach(item => {
-                        item.style.display = 'none';
-                    });
-                    answer.style.display = 'block';
-                }
-            });
-        });
-    </script>
+            <div class="join-cta">
+                <h3>Ready to enjoy Rust on your schedule?</h3>
+                <p>Join a community that understands and respects your time commitments while still providing the full Rust experience.</p>
+                <a href="#" class="btn">Connect to Server: rustytea.gg</a>
+                <a href="#" class="btn" style="background-color: #5865F2;">Join Discord Community</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="logo">RustyTea</div>
+        <p>A Rust community for players with real lives</p>
+        <div class="social-links">
+            <a href="#">Discord</a>
+            <a href="#">Twitter</a>
+            <a href="#">Steam Group</a>
+        </div>
+        <p class="copyright">© 2025 RustyTea Community Server. All rights reserved.</p>
+    </footer>
 </body>
 </html>
