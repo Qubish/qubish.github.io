@@ -73,12 +73,14 @@
             display: none;
             padding-top: 10px;
             text-align: left;
+            font-size: 18px;
         }
 
         h2 {
             font-size: 26px;
             margin-bottom: 10px;
             text-align: center;
+            cursor: pointer;
         }
 
         h3 {
@@ -132,8 +134,11 @@
         }
     </style>
     <script>
+        // Function to toggle the visibility of the content in each section
         function toggleSection(section) {
-            section.classList.toggle("active");
+            const content = section.querySelector('.section-content');
+            const isVisible = content.style.display === 'block';
+            content.style.display = isVisible ? 'none' : 'block';
         }
     </script>
 </head>
@@ -191,6 +196,7 @@
             <p><strong>Sign Artist:</strong> Enables players to upload images onto in-game signs using image URLs.</p>
         </div>
     </div>
+
     
 </body>
 </html>
