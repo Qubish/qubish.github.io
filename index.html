@@ -55,14 +55,17 @@
 
         /* Section Styles */
         .section {
-            margin: 40px auto;
+            margin: 20px;
             padding: 20px;
             background-color: #4f3a2d;
             border-radius: 10px;
-            width: 80%;
-            max-width: 1000px;
+            width: 48%;
             cursor: pointer;
             transition: background-color 0.3s;
+            border: 1px solid #a0522d; /* Thin border around each section */
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 4%;
         }
 
         .section:hover {
@@ -76,10 +79,9 @@
             font-size: 18px;
         }
 
-        h2 {
+        h2, h3 {
             font-size: 26px;
             margin-bottom: 10px;
-            text-align: center;
             cursor: pointer;
         }
 
@@ -112,7 +114,19 @@
             font-size: 16px;
             color: #fff;
         }
-        
+
+        /* FAQ Section */
+        .faq-section {
+            width: 48%;
+            margin-top: 20px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .faq-section h3 {
+            cursor: pointer;
+        }
+
         /* Media Query for responsiveness */
         @media (max-width: 768px) {
             header {
@@ -126,6 +140,13 @@
 
             .section {
                 width: 90%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .faq-section {
+                width: 90%;
+                margin-top: 20px;
             }
 
             p, ul {
@@ -152,7 +173,7 @@
         </div>
     </header>
 
-    <!-- Server Rules Section -->
+    <!-- Two Sections Side by Side: Server Rules and About the Community -->
     <div class="section" onclick="toggleSection(this)">
         <h2>Server Rules</h2>
         <div class="section-content">
@@ -167,7 +188,6 @@
         </div>
     </div>
 
-    <!-- About the Community Section -->
     <div class="section" onclick="toggleSection(this)">
         <h2>About the Community</h2>
         <div class="section-content">
@@ -179,7 +199,7 @@
         </div>
     </div>
 
-    <!-- Server Plugins Section -->
+    <!-- Two Sections Below: Server Plugins & FAQ -->
     <div class="section" onclick="toggleSection(this)">
         <h2>Server Plugins & Features</h2>
         <div class="section-content">
@@ -197,6 +217,17 @@
         </div>
     </div>
 
-    
+    <div class="faq-section" onclick="toggleSection(this)">
+        <h2>FAQ</h2>
+        <div class="section-content">
+            <h3>What is RustyTea?</h3>
+            <p>RustyTea is a Rust community that aims to provide a laid-back and enjoyable experience. We strive to create a friendly atmosphere for players of all skill levels.</p>
+            <h3>How do I join the server?</h3>
+            <p>Simply join our Discord using the link above and follow the instructions on how to connect to the server!</p>
+            <h3>What makes RustyTea different from other servers?</h3>
+            <p>We offer a more relaxed Rust experience with fewer pressures on being online all the time. We are also very new-player-friendly and feature a variety of helpful plugins!</p>
+        </div>
+    </div>
+
 </body>
 </html>
