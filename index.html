@@ -51,8 +51,24 @@
             padding: 20px;
             background-color: #4f3a2d;
             border-radius: 10px;
+            cursor: pointer;
+        }
+        .section-content {
+            display: none;
+            padding-top: 10px;
+        }
+        .section:hover {
+            background-color: #5a3d2b;
+        }
+        .section.active .section-content {
+            display: block;
         }
     </style>
+    <script>
+        function toggleSection(section) {
+            section.classList.toggle("active");
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -62,67 +78,76 @@
         </div>
     </header>
     
-    <div class="section">
+    <div class="section" onclick="toggleSection(this)">
         <h2>Server Rules</h2>
-        <p>To keep Rusty Tea a fun and fair place for everyone, please follow these rules. Failure to comply may result in warnings, kicks, or bans.</p>
-        <ul style="text-align: left; display: inline-block;">
-            <li><strong>No Cheating or Exploits:</strong> Use of cheats, hacks, macros, or exploits is strictly prohibited. Any form of unfair advantage will result in an immediate ban.</li>
-            <li><strong>Be Somewhat Respectful:</strong> Keep discussions civil—banter, toxicity, and general Rust chatter is fine, but we do have limits. (Albeit higher than normal because, let's face it, it's Rust.)</li>
-            <li><strong>No Spamming or Advertising:</strong> Do not flood chat with unnecessary messages. Advertising other servers or self-promotion is not permitted.</li>
-            <li><strong>No Impersonation:</strong> Do not pretend to be staff, admins, or other players. Fake reports and misleading information will result in penalties.</li>
-            <li><strong>Follow Admin Instructions:</strong> Admins are here to ensure fair play.</li>
-        </ul>
+        <div class="section-content">
+            <p>To keep Rusty Tea a fun and fair place for everyone, please follow these rules. Failure to comply may result in warnings, kicks, or bans.</p>
+            <ul style="text-align: left; display: inline-block;">
+                <li><strong>No Cheating or Exploits:</strong> Use of cheats, hacks, macros, or exploits is strictly prohibited. Any form of unfair advantage will result in an immediate ban.</li>
+                <li><strong>Be Somewhat Respectful:</strong> Keep discussions civil—banter, toxicity, and general Rust chatter is fine, but we do have limits. (Albeit higher than normal because, let's face it, it's Rust.)</li>
+                <li><strong>No Spamming or Advertising:</strong> Do not flood chat with unnecessary messages. Advertising other servers or self-promotion is not permitted.</li>
+                <li><strong>No Impersonation:</strong> Do not pretend to be staff, admins, or other players. Fake reports and misleading information will result in penalties.</li>
+                <li><strong>Follow Admin Instructions:</strong> Admins are here to ensure fair play.</li>
+            </ul>
+        </div>
     </div>
     
-    <div class="section">
+    <div class="section" onclick="toggleSection(this)">
         <h2>About the Community</h2>
-        <p>RustyTea is a friendly and competitive Rust server where players can build, raid, and survive together.</p>
-        <p>Our goal is to provide a balanced and enjoyable experience for all players, whether you're a solo survivor or part of a large team.</p>
-        <p>We are a community of players who enjoy a more laid-back Rust experience. We understand that many of us have daily jobs and responsibilities, so our server is designed to allow players to enjoy Rust without the pressure of being online all the time. Whether you're a casual player or a seasoned survivor, RustyTea offers a welcoming environment where you can play at your own pace.</p>
-        <p>We are also Linux player and new player friendly, with an active admin team dedicated to ensuring a smooth and fun experience for everyone. We strive to create a place where players of all skill levels feel comfortable and can grow together.</p>
-        <p>We hope to grow our community and welcome new players who share our vision of a fun, engaging, and fair Rust experience. Join us and be part of a group that values both competition and camaraderie!</p>
+        <div class="section-content">
+            <p>RustyTea is a friendly and competitive Rust server where players can build, raid, and survive together.</p>
+            <p>Our goal is to provide a balanced and enjoyable experience for all players, whether you're a solo survivor or part of a large team.</p>
+            <p>We are a community of players who enjoy a more laid-back Rust experience. We understand that many of us have daily jobs and responsibilities, so our server is designed to allow players to enjoy Rust without the pressure of being online all the time. Whether you're a casual player or a seasoned survivor, RustyTea offers a welcoming environment where you can play at your own pace.</p>
+            <p>We are also Linux player and new player friendly, with an active admin team dedicated to ensuring a smooth and fun experience for everyone. We strive to create a place where players of all skill levels feel comfortable and can grow together.</p>
+            <p>We hope to grow our community and welcome new players who share our vision of a fun, engaging, and fair Rust experience. Join us and be part of a group that values both competition and camaraderie!</p>
+        </div>
     </div>
-    
-    <div class="section">
+
+    <div class="section" onclick="toggleSection(this)">
         <h2>Server Plugins & Features</h2>
-        <h3>Server Plugins</h3>
+        <div class="section-content">
+            <h3>Server Plugins</h3>
 
-        <h4>CarbonMod (Core Framework)</h4>
-        <p>CarbonMod is a powerful Rust server framework that enhances performance, modding capabilities, and customization options for server owners. It provides a strong foundation for plugin management and server optimization.</p>
+            <h4>CarbonMod (Core Framework)</h4>
+            <p>CarbonMod is a powerful Rust server framework that enhances performance, modding capabilities, and customization options for server owners. It provides a strong foundation for plugin management and server optimization.</p>
 
-        <h4>Advert Messages</h4>
-        <p>Automates in-game announcements to keep players informed about rules, events, and updates. Messages can be customized and scheduled to appear at set intervals.</p>
+            <h4>Advert Messages</h4>
+            <p>Automates in-game announcements to keep players informed about rules, events, and updates. Messages can be customized and scheduled to appear at set intervals.</p>
 
-        <h4>Private Messages</h4>
-        <p>Allows players to send direct messages to each other in-game using simple chat commands. This improves communication without needing global chat.</p>
+            <h4>Private Messages</h4>
+            <p>Allows players to send direct messages to each other in-game using simple chat commands. This improves communication without needing global chat.</p>
 
-        <h4>Sort Button</h4>
-        <p>Adds a convenient Sort button to storage containers, letting players quickly organize their loot. No more messy inventories!</p>
+            <h4>Sort Button</h4>
+            <p>Adds a convenient Sort button to storage containers, letting players quickly organize their loot. No more messy inventories!</p>
 
-        <h4>Skip Night Vote</h4>
-        <p>Lets players vote to skip the night cycle, keeping gameplay active and avoiding long, dark downtime. If enough players vote, the night is skipped instantly.</p>
+            <h4>Skip Night Vote</h4>
+            <p>Lets players vote to skip the night cycle, keeping gameplay active and avoiding long, dark downtime. If enough players vote, the night is skipped instantly.</p>
 
-        <h4>Time of Day</h4>
-        <p>Allows server admins to control and customize the in-game day/night cycle. Adjust the length of day or night to fit the server’s needs.</p>
+            <h4>Time of Day</h4>
+            <p>Allows server admins to control and customize the in-game day/night cycle. Adjust the length of day or night to fit the server’s needs.</p>
 
-        <h4>Better Loot</h4>
-        <p>Improves loot tables by balancing and modifying drop rates to enhance gameplay. Ensures a more rewarding loot experience without breaking game balance.</p>
+            <h4>Better Loot</h4>
+            <p>Improves loot tables by balancing and modifying drop rates to enhance gameplay. Ensures a more rewarding loot experience without breaking game balance.</p>
 
-        <h4>Stack Size Controller</h4>
-        <p>Customizes stack sizes for different items, reducing clutter and improving inventory management. Helps players carry and store more efficiently.</p>
+            <h4>Stack Size Controller</h4>
+            <p>Customizes stack sizes for different items, reducing clutter and improving inventory management. Helps players carry and store more efficiently.</p>
 
-        <h4>Skins</h4>
-        <p>Allows players to access and apply all official Rust skins to their items using an easy in-game command. Personalize your gear without needing skins in your Steam inventory!</p>
+            <h4>Skins</h4>
+            <p>Allows players to access and apply all official Rust skins to their items using an easy in-game command. Personalize your gear without needing skins in your Steam inventory!</p>
 
-        <h4>Sign Artist</h4>
-        <p>Enables players to upload images onto in-game signs using image URLs. Perfect for customizing bases, creating advertisements, or just adding fun artwork!</p>
+            <h4>Sign Artist</h4>
+            <p>Enables players to upload images onto in-game signs using image URLs. Perfect for customizing bases, creating advertisements, or just adding fun artwork!</p>
+        </div>
     </div>
-    
+
     <div class="container">
         <h2>Join the RustyTea Community</h2>
         <p>RustyTea is a dedicated Rust server where players can enjoy a fun and friendly environment.</p>
         <p>Join our Discord for updates, events, and to connect with fellow players.</p>
     </div>
     
+    <footer>
+        &copy; 2025 RustyTea. All Rights Reserved.
+    </footer>
 </body>
 </html>
