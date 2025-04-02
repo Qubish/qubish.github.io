@@ -5,24 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RustyTea - Rust Community</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* General Reset */
+        * {
             margin: 0;
             padding: 0;
-            background-color: #3b2f2f;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #2d2d2d;
             color: #fff;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
             text-align: center;
         }
+
+        /* Header */
         header {
             background-color: #8b4513;
             padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
             position: relative;
         }
-        .container {
-            padding: 20px;
+
+        .button-container {
+            margin-top: 10px;
         }
+
         .button {
             display: inline-block;
             background-color: #d2691e;
@@ -35,33 +48,87 @@
             transition: background-color 0.3s;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
         }
+
         .button:hover {
             background-color: #a0522d;
         }
-        .button-container {
-            margin-top: 15px;
+
+        /* Section Styles */
+        .section {
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #4f3a2d;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 1000px;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
+
+        .section:hover {
+            background-color: #5a3d2b;
+        }
+
+        .section-content {
+            display: none;
+            padding-top: 10px;
+            text-align: left;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-top: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
         footer {
             margin-top: 40px;
             padding: 20px;
             background-color: #5a3d2b;
+            font-size: 16px;
+            color: #fff;
         }
-        .section {
-            margin: 40px 20px;
-            padding: 20px;
-            background-color: #4f3a2d;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-        .section-content {
-            display: none;
-            padding-top: 10px;
-        }
-        .section:hover {
-            background-color: #5a3d2b;
-        }
-        .section.active .section-content {
-            display: block;
+        
+        /* Media Query for responsiveness */
+        @media (max-width: 768px) {
+            header {
+                font-size: 24px;
+            }
+
+            .button {
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+
+            .section {
+                width: 90%;
+            }
+
+            p, ul {
+                font-size: 16px;
+            }
         }
     </style>
     <script>
@@ -71,19 +138,21 @@
     </script>
 </head>
 <body>
+
+    <!-- Header -->
     <header>
         RustyTea - Welcome to Our Rust Community
         <div class="button-container">
-            <!-- Updated Discord link -->
             <a href="https://discord.gg/u8u4txWSbu" class="button" target="_blank">Join Our Discord</a>
         </div>
     </header>
-    
+
+    <!-- Server Rules Section -->
     <div class="section" onclick="toggleSection(this)">
         <h2>Server Rules</h2>
         <div class="section-content">
             <p>To keep Rusty Tea a fun and fair place for everyone, please follow these rules. Failure to comply may result in warnings, kicks, or bans.</p>
-            <ul style="text-align: left; display: inline-block;">
+            <ul>
                 <li><strong>No Cheating or Exploits:</strong> Use of cheats, hacks, macros, or exploits is strictly prohibited. Any form of unfair advantage will result in an immediate ban.</li>
                 <li><strong>Be Somewhat Respectful:</strong> Keep discussions civil—banter, toxicity, and general Rust chatter is fine, but we do have limits. (Albeit higher than normal because, let's face it, it's Rust.)</li>
                 <li><strong>No Spamming or Advertising:</strong> Do not flood chat with unnecessary messages. Advertising other servers or self-promotion is not permitted.</li>
@@ -92,7 +161,8 @@
             </ul>
         </div>
     </div>
-    
+
+    <!-- About the Community Section -->
     <div class="section" onclick="toggleSection(this)">
         <h2>About the Community</h2>
         <div class="section-content">
@@ -104,51 +174,28 @@
         </div>
     </div>
 
+    <!-- Server Plugins Section -->
     <div class="section" onclick="toggleSection(this)">
         <h2>Server Plugins & Features</h2>
         <div class="section-content">
             <h3>Server Plugins</h3>
-
-            <h4>CarbonMod (Core Framework)</h4>
-            <p>CarbonMod is a powerful Rust server framework that enhances performance, modding capabilities, and customization options for server owners. It provides a strong foundation for plugin management and server optimization.</p>
-
-            <h4>Advert Messages</h4>
-            <p>Automates in-game announcements to keep players informed about rules, events, and updates. Messages can be customized and scheduled to appear at set intervals.</p>
-
-            <h4>Private Messages</h4>
-            <p>Allows players to send direct messages to each other in-game using simple chat commands. This improves communication without needing global chat.</p>
-
-            <h4>Sort Button</h4>
-            <p>Adds a convenient Sort button to storage containers, letting players quickly organize their loot. No more messy inventories!</p>
-
-            <h4>Skip Night Vote</h4>
-            <p>Lets players vote to skip the night cycle, keeping gameplay active and avoiding long, dark downtime. If enough players vote, the night is skipped instantly.</p>
-
-            <h4>Time of Day</h4>
-            <p>Allows server admins to control and customize the in-game day/night cycle. Adjust the length of day or night to fit the server’s needs.</p>
-
-            <h4>Better Loot</h4>
-            <p>Improves loot tables by balancing and modifying drop rates to enhance gameplay. Ensures a more rewarding loot experience without breaking game balance.</p>
-
-            <h4>Stack Size Controller</h4>
-            <p>Customizes stack sizes for different items, reducing clutter and improving inventory management. Helps players carry and store more efficiently.</p>
-
-            <h4>Skins</h4>
-            <p>Allows players to access and apply all official Rust skins to their items using an easy in-game command. Personalize your gear without needing skins in your Steam inventory!</p>
-
-            <h4>Sign Artist</h4>
-            <p>Enables players to upload images onto in-game signs using image URLs. Perfect for customizing bases, creating advertisements, or just adding fun artwork!</p>
+            <p><strong>CarbonMod (Core Framework):</strong> CarbonMod is a powerful Rust server framework that enhances performance, modding capabilities, and customization options for server owners.</p>
+            <p><strong>Advert Messages:</strong> Automates in-game announcements to keep players informed about rules, events, and updates.</p>
+            <p><strong>Private Messages:</strong> Allows players to send direct messages to each other in-game using simple chat commands.</p>
+            <p><strong>Sort Button:</strong> Adds a convenient Sort button to storage containers, letting players quickly organize their loot.</p>
+            <p><strong>Skip Night Vote:</strong> Lets players vote to skip the night cycle, keeping gameplay active.</p>
+            <p><strong>Time of Day:</strong> Allows server admins to control and customize the in-game day/night cycle.</p>
+            <p><strong>Better Loot:</strong> Improves loot tables by balancing and modifying drop rates to enhance gameplay.</p>
+            <p><strong>Stack Size Controller:</strong> Customizes stack sizes for different items, reducing clutter and improving inventory management.</p>
+            <p><strong>Skins:</strong> Allows players to access and apply all official Rust skins to their items using an easy in-game command.</p>
+            <p><strong>Sign Artist:</strong> Enables players to upload images onto in-game signs using image URLs.</p>
         </div>
     </div>
 
-    <div class="container">
-        <h2>Join the RustyTea Community</h2>
-        <p>RustyTea is a dedicated Rust server where players can enjoy a fun and friendly environment.</p>
-        <p>Join our Discord for updates, events, and to connect with fellow players.</p>
-    </div>
-    
+    <!-- Footer -->
     <footer>
         &copy; 2025 RustyTea. All Rights Reserved.
     </footer>
+    
 </body>
 </html>
