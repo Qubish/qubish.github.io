@@ -3,236 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RustyTea - Rust Community</title>
+    <title>RustyTea - Rust Community for Busy Players</title>
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #2a1f1f;
-            color: #fff;
+            margin: 0;
+            padding: 0;
+            background-color: #282828;
+            color: #ccc;
             line-height: 1.6;
-            padding: 0;
-            margin: 0;
-            text-align: center;
         }
 
-        /* Header */
         header {
-            background-color: #6a3f33;
-            padding: 20px;
-            color: white;
-            font-size: 32px;
-            font-weight: 700;
-            position: relative;
+            background-color: #3a3a3a;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 2px solid #daa520;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgODAwIDEyMCI+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkMSIgcz0iMCIgZT0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iI2I4ODYwYiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmY2M2NiIvPjwvbGluZWFyR3JhZGllbnQ+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIxMjAiIGZpbGw9InVybCgjZ3JhZDEpIi8+PHRleHQgeD0iNDAwIiB5PSI2MCIgZm9udC1zaXplPSI1MCIgZm9udC1mYW1pbHk9IkltcGFjdCwgYWdlbnN5IGfb3RoaWMiIGZpbGw9IiMzMzMiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5SdXN0eVRlYTwvdGV4dD48L3N2Zz4='); /* Rust themed banner */
+            background-size: cover;
+            background-position: center;
         }
 
-        .button-container {
-            margin-top: 10px;
-        }
-
-        .button {
-            display: inline-block;
-            background-color: #d2691e;
-            padding: 15px 30px;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .button:hover {
-            background-color: #a0522d;
-        }
-
-        /* Section Styles */
-        .section {
-            margin: 20px;
-            padding: 20px;
-            background-color: #4f3a2d;
-            border-radius: 10px;
-            width: 48%;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            border: 1px solid #8b4513; /* Thin border around each section */
-            display: inline-block;
-            vertical-align: top;
-            margin-right: 4%;
-        }
-
-        .section:hover {
-            background-color: #5a3d2b;
-        }
-
-        .section-content {
-            display: none;
-            padding-top: 10px;
-            text-align: left;
-            font-size: 18px;
-        }
-
-        h2, h3 {
-            font-size: 26px;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-
-        h3 {
-            font-size: 22px;
-            margin-top: 10px;
-        }
-
-        p {
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-
-        ul {
-            list-style-type: none;
+        header h1 {
             margin: 0;
-            padding: 0;
-            font-size: 18px;
-            text-align: left;
+            color: #ffc857;
+            font-family: 'Georgia', serif;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        ul li {
-            margin-bottom: 10px;
+        header p.server-ip { /* Styling for the server IP paragraph */
+          margin-top: 10px;
+          font-size: 1.2em;
+          color: #ddd;
+          font-family: 'Courier New', monospace; /* Professional-looking monospace font */
+          border: 1px solid #555; /* Add a subtle border */
+          padding: 8px 12px; /* Add padding for spacing */
+          border-radius: 5px; /* Add rounded corners */
+          background-color: #444; /* Darker background for contrast */
+        }
+
+        /* ... (Your existing CSS styles) ... */
+        section {
+            padding: 50px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            color: #daa520;
+            border-bottom: 1px solid #daa520;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-family: 'Georgia', serif;
+            font-size: 1.8em;
+        }
+
+        .container {
+            background-color: #333;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #e66a4a;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            border: 1px solid #daa520;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #d15f43;
         }
 
         footer {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #5a3d2b;
-            font-size: 16px;
-            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #3a3a3a;
+            font-size: 0.9em;
+            border-top: 1px solid #daa520;
         }
 
-        /* FAQ Section */
-        .faq-section {
-            width: 48%;
-            margin-top: 20px;
-            display: inline-block;
-            vertical-align: top;
+        ul {
+          list-style-type: none;
+          padding: 0;
+          margin-top: 15px;
         }
 
-        .faq-section h3 {
-            cursor: pointer;
+        li {
+          margin-bottom: 8px;
         }
 
-        /* Prevent clicks on content inside dropdown from triggering toggle */
-        .section-content {
-            pointer-events: auto;
-        }
-
-        /* Media Query for responsiveness */
         @media (max-width: 768px) {
-            header {
-                font-size: 24px;
+            section {
+                padding: 30px 15px;
             }
 
-            .button {
-                font-size: 16px;
-                padding: 12px 20px;
+            .container {
+                padding: 20px;
             }
 
-            .section {
-                width: 90%;
-                margin-right: 0;
-                margin-bottom: 20px;
+            header h1 {
+                font-size: 2em;
             }
 
-            .faq-section {
-                width: 90%;
-                margin-top: 20px;
-            }
-
-            p, ul {
-                font-size: 16px;
+            section h2 {
+                font-size: 1.5em;
             }
         }
     </style>
-    <script>
-        // Function to toggle the visibility of the content in each section
-        function toggleSection(section) {
-            const content = section.querySelector('.section-content');
-            const isVisible = content.style.display === 'block';
-            content.style.display = isVisible ? 'none' : 'block';
-        }
-    </script>
 </head>
 <body>
-
-    <!-- Header -->
     <header>
-        RustyTea - Welcome to Our Rust Community
-        <div class="button-container">
-            <a href="https://discord.gg/u8u4txWSbu" class="button" target="_blank">Join Our Discord</a>
-        </div>
+        <h1>RustyTea</h1>
+        <p class="server-ip">client.connect rust.RustyTea.com</p>
+        <p>Survive. Build. Relax. - A Cozy Rust Community</p>
     </header>
 
-    <!-- Two Sections Side by Side: Server Rules and About the Community -->
-    <div class="section" onclick="toggleSection(this)">
-        <h2>Server Rules</h2>
-        <div class="section-content">
-            <p>To keep Rusty Tea a fun and fair place for everyone, please follow these rules. Failure to comply may result in warnings, kicks, or bans.</p>
+    <section>
+        <div class="container">
+            <h2>Welcome to RustyTea!</h2>
+            <p>Life's busy, and Rust's a grind. We get it. RustyTea is a chill spot for mature players who balance work and play. Join us for relaxed sessions, teamwork, and a community that values your time.</p>
+            <p>Enjoy the post-apocalyptic world without the pressure. We're here to make your limited Rust time enjoyable and rewarding.</p>
+            <p>Ready to experience Rust in a new light? Jump into our server and see what a difference a relaxed, mature community can make. We promise you won't regret giving us a try!</p>
+            <p><strong>We are also new player friendly and Linux OS friendly!</strong></p>
+        </div>
+
+        <div class="container">
+            <h2>Anti-Offline Raid System</h2>
+            <p>We believe in encouraging online raids for a more engaging and fair gameplay experience. To achieve this, we've implemented an anti-offline raid system:</p>
             <ul>
-                <li><strong>No Cheating or Exploits:</strong> Use of cheats, hacks, macros, or exploits is strictly prohibited. Any form of unfair advantage will result in an immediate ban.</li>
-                <li><strong>Be Somewhat Respectful:</strong> Keep discussions civil—banter, toxicity, and general Rust chatter is fine, but we do have limits. (Albeit higher than normal because, let's face it, it's Rust.)</li>
-                <li><strong>No Spamming or Advertising:</strong> Do not flood chat with unnecessary messages. Advertising other servers or self-promotion is not permitted.</li>
-                <li><strong>No Impersonation:</strong> Do not pretend to be staff, admins, or other players. Fake reports and misleading information will result in penalties.</li>
-                <li><strong>Follow Admin Instructions:</strong> Admins are here to ensure fair play.</li>
+                <li><strong>Double Protection:</strong> When a player logs off, their base receives 20% of the normal damage to the base and gradually returns to normal over the course of 48 hours. This encourages players to raid online and to avoid immediately raiding a player as soon as they log off.</li>
+                <li><strong>Reduced Protection:</strong> For 48 hours there is some form of protection, damage or shoot the base with explosive to see if the base is protected!</li>
+                <li><strong>Normal Raid Cost:</strong> After 48 hours of inactivity, the base returns to the normal raid cost.</li>
+            </ul>
+            <p>We understand players love to raid, and offline raiding is a part of rust. This system promotes online raids and gives players a better chance to defend their bases while they're online but still allows offline!</p>
+        </div>
+
+        <div class="container">
+            <h2>Rules</h2>
+            <ul>
+                <li><strong>Respectful Communication (Mostly):</strong> Trash talk is expected, but targeted harassment, real-life threats, or slurs are strictly prohibited. Keep global chat relatively civil.</li>
+                <li><strong>No Exploiting or Cheating:</strong> Exploiting game glitches, using third-party cheats, or any unfair advantage is banned.</li>
+                <li><strong>Raid Rules (Encouraging Online Raids):</strong>
+                    <ul>
+                        <li>Offline raiding is permitted, but excessive griefing is discouraged.</li>
+                        <li>Building blocking or excessive land claim is not allowed.</li>
+                        <li>Do not repeatedly raid the same small group of players.</li>
+                        <li>The server features a plugin that reduces offline raiding damage to encourage online raids.</li>
+                        <li>Raids that bypass the plugin's intent will be reviewed.</li>
+                        <li>Abusing the raid plugin by logging off during an active online raid is prohibited.</li>
+                    </ul>
+                </li>
+                <li><strong>Admin Discretion:</strong> Admins can act against disruptive/unfair behavior.</li>
+                <li><strong>Reporting:</strong> Provide evidence to report violations. False reports are taken seriously.</li>
+                <li><strong>New Player Tolerance:</strong> Show tolerance to new players.</li>
             </ul>
         </div>
-    </div>
 
-    <div class="section" onclick="toggleSection(this)">
-        <h2>About the Community</h2>
-        <div class="section-content">
-            <p>RustyTea is a friendly and competitive Rust server where players can build, raid, and survive together.</p>
-            <p>Our goal is to provide a balanced and enjoyable experience for all players, whether you're a solo survivor or part of a large team.</p>
-            <p>We are a community of players who enjoy a more laid-back Rust experience. We understand that many of us have daily jobs and responsibilities, so our server is designed to allow players to enjoy Rust without the pressure of being online all the time. Whether you're a casual player or a seasoned survivor, RustyTea offers a welcoming environment where you can play at your own pace.</p>
-            <p>We are also Linux player and new player friendly, with an active admin team dedicated to ensuring a smooth and fun experience for everyone. We strive to create a place where players of all skill levels feel comfortable and can grow together.</p>
-            <p>We hope to grow our community and welcome new players who share our vision of a fun, engaging, and fair Rust experience. Join us and be part of a group that values both competition and camaraderie!</p>
+        <div class="container">
+            <h2>FAQ</h2>
+            <ul>
+                <li><strong>Q: How do I join the server?</strong> A: Join our Discord for server details.</li>
+                <li><strong>Q: What time zone do you play in?</strong> A: We have members from various time zones.</li>
+                <li><strong>Q: Can I bring my friends?</strong> A: Absolutely! All are welcome.</li>
+                <li><strong>Q: Is there a minimum age requirement?</strong> A: Yes, we are a mature community, please check discord for details.</li>
+                <li><strong>Q: What is the server wipe schedule?</strong> A: Our server wipes biweekly, starting with the official force wipe on the first Thursday of a month. Blueprints will wipe monthly on the first Thursday.</li>
+                <li><strong>Q: What is the map size?</strong> A: The map size is 3500-4500 depending on server population. We welcome suggestions and input on how its working out.</li>
+                <li><strong>Q: Are there any custom maps or mods?</strong> A: See our list of plugins in our discord! We have considered custom maps, but have not done so. If you would like to see a custom map feel free to let us know!
+                <li><strong>Q: Is PVP always active?</strong> A: Yes, PVP is enabled, but we encourage fair fights.</li>
+                <li><strong>Q: Do you have active admins?</strong> A: Yes, we have active admins who monitor the server and enforce the rules.</li>
+                <li><strong>Q: What are the server connection details?</strong> A: Join the server by typing client.connect rust.rustytea.com in the f1 console, find us on the steam server browser, or under the modded tab on the in game browser! <li>
+            </ul>
         </div>
-    </div>
 
-    <!-- Two Sections Below: Server Plugins & FAQ -->
-    <div class="section" onclick="toggleSection(this)">
-        <h2>Server Plugins & Features</h2>
-        <div class="section-content">
-            <h3>Server Plugins</h3>
-            <p><strong>CarbonMod (Core Framework):</strong> CarbonMod is a powerful Rust server framework that enhances performance, modding capabilities, and customization options for server owners.</p>
-            <p><strong>Advert Messages:</strong> Automates in-game announcements to keep players informed about rules, events, and updates.</p>
-            <p><strong>Private Messages:</strong> Allows players to send direct messages to each other in-game using simple chat commands.</p>
-            <p><strong>Sort Button:</strong> Adds a convenient Sort button to storage containers, letting players quickly organize their loot.</p>
-            <p><strong>Skip Night Vote:</strong> Lets players vote to skip the night cycle, keeping gameplay active.</p>
-            <p><strong>Time of Day:</strong> Allows server admins to control and customize the in-game day/night cycle.</p>
-            <p><strong>Better Loot:</strong> Improves loot tables by balancing and modifying drop rates to enhance gameplay.</p>
-            <p><strong>Stack Size Controller:</strong> Customizes stack sizes for different items, reducing clutter and improving inventory management.</p>
-            <p><strong>Skins:</strong> Allows players to access and apply all official Rust skins to their items using an easy in-game command.</p>
-            <p><strong>Sign Artist:</strong> Enables players to upload images onto in-game signs using image URLs.</p>
+        <div class="container">
+            <h2>Join Our Discord</h2>
+            <p>Ready to relax and play Rust with a friendly community? Click the link below to join our Discord!</p>
+            <a href=https://discord.gg/u8u4txWSbu class="cta-button">Join Our Discord</a>
         </div>
-    </div>
-
-    <div class="section faq-section" onclick="toggleSection(this)">
-        <h2>FAQ</h2>
-        <div class="section-content">
-            <h3>What is RustyTea?</h3>
-            <p>RustyTea is a Rust community that aims to provide a laid-back and enjoyable experience. We strive to create a friendly atmosphere for players of all skill levels.</p>
-            <h3>How do I join the server?</h3>
-            <p>Simply join our Discord by finding us in the modded server listing, typing "client.connect rust.rustytea.com" in the rust console, or by finding us in the steam server browser!</p>
-            <h3>What makes RustyTea different from other servers?</h3>
-            <p>We offer a more relaxed Rust experience with fewer pressures on being online all the time. We are also very new-player-friendly and feature a variety of helpful plugins!</p>
-        </div>
-    </div>
+    </section>
 
 </body>
 </html>
